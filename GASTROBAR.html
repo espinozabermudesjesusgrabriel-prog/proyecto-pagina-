@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SABORÉ | Gastrobar</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --negro: #080808;
+            --negro-claro: #111111;
+            --gris: #b9b9b9;
+            --dorado: #c99b50;
+            --crema: #f1eadc;
+            --blanco: #ffffff;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--negro);
+            color: var(--crema);
+            line-height: 1.6;
+        }
+        
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 400;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* NAVEGACIÓN */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 85px;
+            background: rgba(8, 8, 8, 0.96);
+            border-bottom: 1px solid #252525;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1400px;
+            height: 100%;
+            margin: auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            color: var(--crema);
+            font-size: 2rem;
+            letter-spacing: 7px;
+        }
+        
+        .logo span {
+            display: block;
+            font-family: Arial, sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 6px;
+            text-align: center;
+            margin-top: -4px;
+            color: var(--dorado);
+        }
+        
+        .menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        
+        .menu a {
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            color: #d2d2d2;
+            transition: 0.3s;
+        }
+        
+        .menu a:hover {
+            color: var(--dorado);
+        }
+        
+        .sociales {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--dorado);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--dorado);
+        }
+        /* BOTONES */
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 25px;
+            border: 1px solid var(--dorado);
+            color: var(--crema);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.72rem;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--dorado);
+            color: var(--negro);
+        }
+        /* INICIO */
+        
+        #inicio {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-fondo {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+        
+        .capa-oscura {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient( 90deg, rgba(8, 8, 8, .98) 30%, rgba(8, 8, 8, 0.048));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            padding: 140px 8% 80px;
+            max-width: 800px;
+        }
+        
+        .subtitulo {
+            color: var(--dorado);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.75rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content h1 span {
+            color: var(--dorado);
+        }
+        
+        .linea {
+            width: 70px;
+            height: 2px;
+            background: var(--dorado);
+            margin: 25px 0;
+        }
+        
+        .hero-content p {
+            max-width: 480px;
+            color: #c8c8c8;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+        }
+        
+        .scroll {
+            margin-top: 70px;
+            color: #888 !important;
+            font-size: 0.7rem !important;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        /* CONÓCENOS */
+        
+        #conocenos {
+            min-height: 100vh;
+            padding: 100px 8%;
+            background: var(--crema);
+            color: var(--negro);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .conocenos-texto h2,
+        .menu-intro h2,
+        .bebidas-texto h2,
+        .galeria-texto h2,
+        .reservas-texto h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        
+        .conocenos-texto p {
+            color: #555;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        
+        .conocenos-video {
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .valores {
+            grid-column: 1 / -1;
+            background: var(--negro-claro);
+            color: var(--crema);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .valor {
+            padding: 40px 30px;
+            text-align: center;
+            border-right: 1px solid #333;
+        }
+        
+        .valor:last-child {
+            border-right: none;
+        }
+        
+        .valor .icono {
+            font-size: 2rem;
+            color: var(--dorado);
+            margin-bottom: 15px;
+        }
+        
+        .valor h3 {
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .valor p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        /* MENÚ */
+        
+        #menu {
+            padding: 100px 8%;
+            background: var(--negro);
+        }
+        
+        .menu-superior {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .menu-intro h2 {
+            font-size: 4rem;
+        }
+        
+        .menu-intro h2 span {
+            color: var(--dorado);
+        }
+        
+        .menu-imagen {
+            height: 450px;
+            overflow: hidden;
+        }
+        /* TARJETAS DE PLATOS */
+        
+        .platos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+        
+        .plato {
+            background: #151515;
+            border: 1px solid #292929;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .plato:hover {
+            transform: translateY(-10px);
+            border-color: var(--dorado);
+        }
+        
+        .plato-imagen {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #080808;
+        }
+        
+        .plato-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .plato:hover .plato-imagen img {
+            transform: scale(1.06);
+        }
+        
+        .plato-info {
+            padding: 20px;
+            min-height: 145px;
+        }
+        
+        .plato-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        
+        .plato-info p {
+            color: #999;
+            font-size: 0.85rem;
+        }
+        
+        .precio {
+            color: var(--dorado);
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        /* BEBIDAS */
+        
+        #bebidas {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 8%;
+        }
+        
+        .bebidas-fondo {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+        
+        .bebidas-capa {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient( 90deg, rgba(8, 8, 8, .95), rgba(8, 8, 8, .6));
+            z-index: -1;
+        }
+        
+        .bebidas-texto {
+            max-width: 650px;
+        }
+        
+        .bebidas-texto h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+        }
+        
+        .bebidas-texto h2 span {
+            color: var(--dorado);
+        }
+        
+        .bebidas-texto p {
+            color: #aaa;
+            margin-bottom: 35px;
+            max-width: 550px;
+        }
+        
+        .bebidas-grid {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .categoria-bebida {
+            background: rgba(15, 15, 15, .92);
+            padding: 35px;
+            border: 1px solid #333;
+        }
+        
+        .categoria-bebida h3 {
+            color: var(--dorado);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .categoria-bebida ul {
+            list-style: none;
+            color: #aaa;
+        }
+        
+        .categoria-bebida li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        /* GALERÍA */
+        
+        #galeria {
+            min-height: 100vh;
+            padding: 100px 8%;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            background: #0d0d0d;
+        }
+        
+        .galeria-texto p {
+            color: #999;
+            max-width: 400px;
+        }
+        
+        .galeria-filtros {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .filtro {
+            border: 1px solid #444;
+            padding: 8px 15px;
+            font-size: 0.7rem;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .filtro.activo,
+        .filtro:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .foto {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: 0.5s;
+            display: block;
+        }
+        
+        .foto:hover img {
+            transform: scale(1.1);
+        }
+        /* RESERVAS */
+        
+        #reservas {
+            background: var(--negro-claro);
+            padding: 100px 8% 0;
+        }
+        
+        .reservas-superior {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            padding-bottom: 80px;
+        }
+        
+        .reservas-texto h2 span {
+            color: var(--dorado);
+        }
+        
+        .reservas-texto p {
+            color: #999;
+            max-width: 500px;
+        }
+        
+        form {
+            border: 1px solid var(--dorado);
+            padding: 35px;
+        }
+        
+        .fila {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        input,
+        select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #555;
+            padding: 15px 5px;
+            color: white;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        
+        select option {
+            background: #111;
+        }
+        
+        .form-btn {
+            width: 100%;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .contacto-info {
+            border-top: 1px solid #333;
+            padding: 50px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .contacto-info h3 {
+            color: var(--dorado);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .contacto-info p {
+            color: #999;
+        }
+        /* FOOTER */
+        
+        footer {
+            border-top: 1px solid #333;
+            padding: 35px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #777;
+            font-size: 0.75rem;
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 1000px) {
+            .menu {
+                display: none;
+            }
+            #conocenos,
+            .menu-superior,
+            #galeria,
+            .reservas-superior {
+                grid-template-columns: 1fr;
+            }
+            .platos-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 22px;
+            }
+            .valores {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .valor:nth-child(2) {
+                border-right: none;
+            }
+            .bebidas-grid {
+                grid-template-columns: 1fr;
+            }
+            .contacto-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            nav {
+                padding: 0 20px;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .sociales {
+                display: none;
+            }
+            #conocenos,
+            #menu,
+            #bebidas,
+            #galeria,
+            #reservas {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            .hero-content {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            .platos-grid,
+            .galeria-grid,
+            .valores,
+            .fila {
+                grid-template-columns: 1fr;
+            }
+            .plato-info {
+                min-height: auto;
+            }
+            .valor {
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+            footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+
+    <header>
+        <nav>
+
+            <a href="#inicio" class="logo">
+                SABORÉ
+                <span>GASTROBAR</span>
+            </a>
+
+            <ul class="menu">
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#conocenos">CONÓCENOS</a></li>
+                <li><a href="#menu">MENÚ</a></li>
+                <li><a href="#bebidas">BEBIDAS</a></li>
+                <li><a href="#galeria">GALERÍA</a></li>
+                <li><a href="#reservas">RESERVAS</a></li>
+            </ul>
+
+            <div class="sociales">
+                <a href="#" class="social">◎</a>
+                <a href="#" class="social">f</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+
+    <!-- NAVEGACIÓN -->
+
+    <header>
+        <nav>
+
+            <a href="#inicio" class="logo">
+                SABORÉ
+                <span>GASTROBAR</span>
+            </a>
+
+            <ul class="menu">
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#conocenos">CONÓCENOS</a></li>
+                <li><a href="#menu">MENÚ</a></li>
+                <li><a href="#bebidas">BEBIDAS</a></li>
+                <li><a href="#galeria">GALERÍA</a></li>
+                <li><a href="#reservas">RESERVAS</a></li>
+            </ul>
+
+            <div class="sociales">
+                <a href="#" class="social">◎</a>
+                <a href="#" class="social">f</a>
+            </div>
+
+        </nav>
+    </header>
+    <!-- INICIO -->
+
+    <section id="inicio">
+
+        <div class="video-fondo">
+            <video autoplay muted loop playsinline>
+                <source src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\videoplayback.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+        </div>
+
+        <div class="capa-oscura"></div>
+
+        <div class="hero-content">
+
+            <p class="subtitulo">Cocina que inspira</p>
+
+            <h1>
+                BUENA COMIDA,
+                <br>
+                <span>MEJORES</span> MOMENTOS.
+            </h1>
+
+            <div class="linea"></div>
+
+            <p>
+                Sabores únicos, ingredientes frescos y la mejor selección de bebidas en un ambiente inolvidable.
+            </p>
+
+            <a href="#reservas" class="btn">
+                Reserva tu mesa →
+            </a>
+
+            <p class="scroll">
+                ↓ Desliza para descubrir
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONÓCENOS -->
+
+    <section id="conocenos">
+
+        <div class="conocenos-texto">
+
+            <p class="subtitulo">Nuestra esencia</p>
+
+            <h2>
+                PASIÓN POR LA
+                <br> BUENA COMIDA
+                <br> Y LOS DETALLES.
+            </h2>
+
+            <div class="linea"></div>
+
+            <p>
+                Somos un gastrobar que combina el arte de la cocina con una experiencia pensada para compartir. Cada plato, bebida y momento ha sido creado para convertirse en un recuerdo.
+            </p>
+
+            <a href="#menu" class="btn">
+                Nuestra historia →
+            </a>
+
+        </div>
+
+        <div class="conocenos-video">
+
+            <video autoplay muted loop playsinline>
+                <source src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\inicio.mp4" type="video/mp4">
+            </video>
+
+        </div>
+
+        <div class="valores">
+
+            <article class="valor">
+                <div class="icono">🌿</div>
+                <h3>INGREDIENTES FRESCOS</h3>
+                <p>Seleccionados cuidadosamente.</p>
+            </article>
+
+            <article class="valor">
+                <div class="icono">♨</div>
+                <h3>COCINA DE AUTOR</h3>
+                <p>Creatividad en cada plato.</p>
+            </article>
+
+            <article class="valor">
+                <div class="icono">♡</div>
+                <h3>HECHO CON PASIÓN</h3>
+                <p>Una experiencia para recordar.</p>
+            </article>
+
+            <article class="valor">
+                <div class="icono">◉</div>
+                <h3>EXPERIENCIAS</h3>
+                <p>Momentos únicos para compartir.</p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENÚ -->
+
+    <section id="menu">
+
+        <div class="menu-superior">
+
+            <div class="menu-intro">
+
+                <p class="subtitulo">Nuestro menú</p>
+
+                <h2>
+                    CREATIVO,
+                    <br> Y
+                    <span>APASIONANTE.</span>
+                </h2>
+
+                <div class="linea"></div>
+
+                <p>
+                    Una fusión de sabores del mundo con el toque único de nuestra cocina.
+                </p>
+
+                <br>
+
+                <a href="#inicio" class="btn">
+                    Volver al inicio →
+                </a>
+
+            </div>
+
+            <div class="menu-imagen">
+
+                <video autoplay muted loop playsinline>
+                    <source src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\presentacion.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLATOS -->
+
+        <div class="platos-grid">
+
+            <article class="plato">
+
+                <div class="plato-imagen">
+                    <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\bruno-albouze-grilled-octopus.jpeg" alt="Pulpo a la parrilla">
+                </div>
+
+                <div class="plato-info">
+                    <h3>Pulpo al grill</h3>
+                    <p>
+                        Pulpo, crema de papa y vegetales frescos.
+                    </p>
+                    <span class="precio">$45.000</span>
+                </div>
+
+            </article>
+
+
+            <article class="plato">
+
+                <div class="plato-imagen">
+                    <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\pizza-margarita-margherita-cherry-tomatoes-tomato-sauce-green-basil-mozzarella-traditional-italian-whole-yeasted-344272324.webp" alt="Pizza artesanal">
+                </div>
+
+                <div class="plato-info">
+                    <h3>Pizza artesanal</h3>
+                    <p>
+                        Masa artesanal y productos frescos.
+                    </p>
+                    <span class="precio">$32.000</span>
+                </div>
+
+            </article>
+
+
+            <article class="plato">
+
+                <div class="plato-imagen">
+                    <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\mejores-hamburguesas-de-mexico.jpg" alt="Hamburguesa especial">
+                </div>
+
+                <div class="plato-info">
+                    <h3>Hamburguesa especial</h3>
+                    <p>
+                        Carne premium, queso y vegetales frescos.
+                    </p>
+                    <span class="precio">$28.000</span>
+                </div>
+
+            </article>
+
+
+            <article class="plato">
+
+                <div class="plato-imagen">
+                    <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\Recetas-de-pastas-italianas.jpg" alt="Pasta de la casa">
+                </div>
+
+                <div class="plato-info">
+                    <h3>Pasta de la casa</h3>
+                    <p>
+                        Pasta fresca con salsa especial.
+                    </p>
+                    <span class="precio">$30.000</span>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- BEBIDAS -->
+
+    <section id="bebidas">
+
+        <div class="bebidas-fondo">
+
+            <video autoplay muted loop playsinline>
+                <source src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\videoplayback (4).mp4" type="video/mp4">
+            </video>
+
+        </div>
+
+        <div class="bebidas-capa"></div>
+
+        <div class="bebidas-texto">
+
+            <p class="subtitulo">Bar & Cocktails</p>
+
+            <h2>
+                BRINDEMOS POR
+                <br>
+                <span>BUENOS MOMENTOS.</span>
+            </h2>
+
+            <div class="linea"></div>
+
+            <p>
+                Descubre nuestra selección de cócteles, vinos y bebidas preparadas para acompañar cada experiencia.
+            </p>
+
+            <a href="#reservas" class="btn">
+                Reservar una mesa →
+            </a>
+
+        </div>
+
+
+        <div class="bebidas-grid">
+
+            <article class="categoria-bebida">
+
+                <h3>CÓCTELES</h3>
+
+                <ul>
+                    <li>Mojito clásico</li>
+                    <li>Margarita</li>
+                    <li>Piña Colada</li>
+                    <li>Gin Tonic</li>
+                    <li>Negroni</li>
+                </ul>
+
+            </article>
+
+
+            <article class="categoria-bebida">
+
+                <h3>VINOS</h3>
+
+                <ul>
+                    <li>Vino tinto</li>
+                    <li>Vino blanco</li>
+                    <li>Vino rosado</li>
+                    <li>Vino de la casa</li>
+                    <li>Selección premium</li>
+                </ul>
+
+            </article>
+
+
+            <article class="categoria-bebida">
+
+                <h3>REFRESCOS</h3>
+
+                <ul>
+                    <li>Limonada natural</li>
+                    <li>Limonada de coco</li>
+                    <li>Jugos naturales</li>
+                    <li>Gaseosas</li>
+                    <li>Agua mineral</li>
+                </ul>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALERÍA -->
+
+    <section id="galeria">
+
+        <div class="galeria-texto">
+
+            <p class="subtitulo">Nuestra galería</p>
+
+            <h2>
+                MOMENTOS QUE
+                <br>
+                <span>INSPIRAN.</span>
+            </h2>
+
+            <div class="linea"></div>
+
+            <p>
+                Conoce algunos de nuestros platos, bebidas y espacios. Una experiencia diseñada para disfrutar con todos los sentidos.
+            </p>
+
+            <div class="galeria-filtros">
+
+                <span class="filtro activo">TODOS</span>
+                <span class="filtro">PLATOS</span>
+                <span class="filtro">BEBIDAS</span>
+                <span class="filtro">ESPACIO</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="galeria-grid">
+
+            <div class="foto">
+                <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\WhatsApp-Image-2022-10-21-at-10.34.35-AM.jpeg" alt="Pulpo al grill">
+            </div>
+
+            <div class="foto">
+                <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\image.jpg" alt="Pizza artesanal">
+            </div>
+
+            <div class="foto">
+                <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\oinkgastrobar_besteirinhaoink_saopaulo_2026_dreisonmedeiros-01.jpg" alt="Hamburguesa">
+            </div>
+
+            <div class="foto">
+                <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\portada-3.jpg" alt="Pasta de la casa">
+            </div>
+
+            <div class="foto">
+                <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\tipos-de-cocteles_101.webp" alt="Cóctel">
+            </div>
+
+            <div class="foto">
+                <img src="C:\Users\J.ESPINOSA\Desktop\PAGINA PSANTIAS\videos\IMAGES\mojito.webp" alt="Interior del gastrobar">
+            </div>
+
+        </div>
+
+    </section>
+    <!-- RESERVAS -->
+
+    <section id="reservas">
+
+        <div class="reservas-superior">
+
+            <div class="reservas-texto">
+                <p class="subtitulo">Reserva tu experiencia</p>
+
+                <h2>
+                    TU MESA TE
+                    <br>
+                    <span>ESPERA.</span>
+                </h2>
+
+                <div class="linea"></div>
+
+                <p>
+                    Reserva tu mesa y disfruta de una experiencia gastronómica única en SABORÉ Gastrobar.
+                </p>
+
+            </div>
+
+
+            <form>
+
+                <div class="fila">
+
+                    <input type="text" placeholder="Nombre" required>
+
+                    <input type="tel" placeholder="Teléfono" required>
+
+                </div>
+
+
+                <div class="fila">
+
+                    <input type="date" required>
+
+                    <input type="time" required>
+
+                </div>
+
+
+                <select required>
+
+                    <option value="">
+                        Número de personas
+                    </option>
+
+                    <option value="1">
+                        1 persona
+                    </option>
+
+                    <option value="2">
+                        2 personas
+                    </option>
+
+                    <option value="3">
+                        3 personas
+                    </option>
+
+                    <option value="4">
+                        4 personas
+                    </option>
+
+                    <option value="5">
+                        5 personas
+                    </option>
+
+                    <option value="6">
+                        6 personas
+                    </option>
+
+                    <option value="7">
+                        7 personas
+                    </option>
+
+                    <option value="8">
+                        8 personas
+                    </option>
+
+                </select>
+
+
+                <button type="submit" class="btn form-btn">
+                    Confirmar reserva →
+                </button>
+
+            </form>
+
+
+        </div>
+
+
+
+
+        <!-- CONTACTO -->
+
+        <div class="contacto-info">
+
+            <div>
+                <h3>UBICACIÓN</h3>
+                <p>
+                    Ibagué, Tolima<br> Colombia
+                </p>
+            </div>
+
+            <div>
+                <h3>HORARIOS</h3>
+                <p>
+                    Lunes - Domingo<br> 12:00 PM - 11:00 PM
+                </p>
+            </div>
+
+            <div>
+                <h3>CONTACTO</h3>
+                <p>
+                    +57 3042219085<br> reservas@saboregastrobar.com
+                </p>
+            </div>
+
+        </div>
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 SABORÉ GASTROBAR. Todos los derechos reservados.</p>
+            <p>BUENA COMIDA · MEJORES MOMENTOS</p>
+        </footer>
+
+        <!-- JAVASCRIPT -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const videos = document.querySelectorAll("video");
+                const secciones = document.querySelectorAll("section[id]");
+                const enlacesMenu = document.querySelectorAll('.menu a[href^="#"]');
+
+                // =========================
+                // VIDEOS DE LA PÁGINA
+                // =========================
+                videos.forEach(video => {
+                    video.autoplay = true;
+                    video.loop = true;
+                    video.playsInline = true;
+                    video.muted = true;
+
+                    video.play().catch(() => {});
+                });
+
+                // Los videos permanecen sin sonido para que la música de fondo
+                // sea la única fuente de audio de la página.
+                const observador = new IntersectionObserver((entradas) => {
+                    entradas.forEach(entrada => {
+                        const videosDeSeccion = entrada.target.querySelectorAll("video");
+
+                        if (entrada.isIntersecting) {
+                            videosDeSeccion.forEach(video => {
+                                video.play().catch(() => {});
+                            });
+                        } else {
+                            videosDeSeccion.forEach(video => {
+                                video.pause();
+                            });
+                        }
+                    });
+                }, {
+                    threshold: 0.25
+                });
+
+                secciones.forEach(seccion => observador.observe(seccion));
+
+                enlacesMenu.forEach(enlace => {
+                    enlace.addEventListener("click", function() {
+                        const destino = document.querySelector(this.getAttribute("href"));
+
+                        if (destino) {
+                            setTimeout(() => {
+                                destino.querySelectorAll("video").forEach(video => {
+                                    video.play().catch(() => {});
+                                });
+                            }, 500);
+                        }
+                    });
+                });
+
+
+
+                // =========================
+                // FILTROS DE GALERÍA
+                // =========================
+                const filtros = document.querySelectorAll(".filtro");
+
+                filtros.forEach(filtro => {
+                    filtro.addEventListener("click", function() {
+                        filtros.forEach(item => item.classList.remove("activo"));
+                        filtro.classList.add("activo");
+                    });
+                });
+
+                // =========================
+                // FORMULARIO DE RESERVA
+                // =========================
+                const formulario = document.querySelector("form");
+
+                formulario.addEventListener("submit", function(event) {
+                    event.preventDefault();
+
+                    alert("¡SOLICITUD ENVIADA!\n\nTu reserva ha sido recibida correctamente.\nGracias por reservar en SABORÉ Gastrobar.");
+
+                    formulario.reset();
+                });
+            });
+        </script>
+
+</body>
+
+
+
+
+</html>
